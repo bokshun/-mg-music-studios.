@@ -18,5 +18,10 @@ npm run dev                  # http://localhost:5173
 ```
 Add `?mock=1` to the address to see clearly labelled demo data with no Supabase connection.
 
+## Vocal Practice Room (milestone 1: recording and live effects)
+Open it from the Lobby (works in `?mock=1` too, since it needs only a microphone). Details, test results and limits: [docs/VOCAL_ROOM.md](docs/VOCAL_ROOM.md).
+
+Run the unit tests (no install needed, Node 20+): `npm test`
+
 ## Next rooms
 Mixing, AI Producer, Mastering, Production, Story Drop and Release Manager, in that order of the directive.

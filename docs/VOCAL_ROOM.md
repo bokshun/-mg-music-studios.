@@ -18,7 +18,7 @@ Status: **milestone 1 of 3**. Recording and live effects only. Pitch correction 
 - Latency is not measured or compensated.
 
 ## Licensing and cost
-No new dependencies were added. The room uses only standard browser APIs (Web Audio, getUserMedia, MediaRecorder) and code written for this repo. The reverb impulse response is generated in code, so no sample packs are involved. No paid services or API calls. The existing dependencies (React, Vite, supabase-js, wavesurfer.js) are open-source libraries; run a licence check after `npm install` before launch.
+No new dependencies were added. The room uses only standard browser APIs (Web Audio, getUserMedia, MediaRecorder) and code written for this repo. The reverb impulse response is generated in code, so no sample packs are involved. No paid services or API calls. The existing dependencies are open-source. Per the lockfile, everything that ships in the browser bundle is MIT, 0BSD (tslib) or BSD-3-Clause (wavesurfer.js); build-only tools are MIT, ISC, Apache-2.0 and CC-BY-4.0 (caniuse-lite, a data package that is not shipped). This is a manifest-level inventory, not a legal audit. MIT and BSD licences require keeping their copyright notices, so keep a third-party notices file with any public release.
 
 ## How it was tested
 | Check | Result |
@@ -31,14 +31,14 @@ No new dependencies were added. The room uses only standard browser APIs (Web Au
 | Compression at maximum | about +1.5 dB louder than original on a steady tone (not a meaningful compression test; see below) |
 
 ## Not verified
-- **`npm install` and `npm run build` were not run** (the registry is blocked in the build session). The room was bundled with esbuild and run in Chrome, and all JSX parses, but the real Vite build is untested. The app shell, Lobby, sign-in and Supabase paths were only syntax-checked, because their dependencies were not installed. There is no `package-lock.json` yet.
+- **Install and build:** Codex ran `npm install` and `npm run build` (Vite 5.4.21, 84 modules) and recorded the results in [VOCAL_ROOM_VALIDATION.md](VOCAL_ROOM_VALIDATION.md), and `package-lock.json` is now committed. I could not reproduce the build myself (registry blocked in my session), so treat it as reported by Codex. I did check that the lockfile matches `package.json` and that `npm test` still passes 21/21. The app shell, Lobby, sign-in and Supabase paths have still not been exercised at runtime.
 - Only Chrome was tested. Firefox, Safari and mobile browsers are untested; Safari records in a different format (the WAV download should still work).
 - Real singing, real headphones and real microphones were not tested. Compression was checked only for sanity on a steady tone, not on dynamic vocals. The fake microphone is a tone, not a voice.
 - How the effects *sound* has not been judged by a person. Preset values are starting points and need tuning by ear.
 - Monitoring latency depends on the device and browser; USB or Bluetooth audio can add noticeable delay.
 
 ## Next
-1. You (or CI) run `npm install`, commit the lockfile, then `npm run build` and `npm test`.
-2. Listen on headphones and tune presets.
+1. Test on real hardware following the checklist in VOCAL_ROOM_VALIDATION.md; tune presets by ear.
+2. **Node 22 or newer** is required to install and build: the current `@supabase/supabase-js` and its sub-packages declare `node >=22`. Set this on the host that builds and deploys the app.
 3. Milestone 2: adjustable pitch correction (key and scale, strength, speed).
 4. Milestone 3: coaching from local pitch and timing measurements of the original take.

@@ -4,6 +4,7 @@ import { mockProjects } from './lib/mock.js';
 import SignIn from './components/SignIn.jsx';
 import Lobby from './components/Lobby.jsx';
 import VocalRoom from './components/VocalRoom.jsx';
+import MixingRoom from './components/MixingRoom.jsx';
 
 export default function App() {
   const mock = forceMock;
@@ -25,7 +26,8 @@ export default function App() {
 
   if (!ready) return <div className="center muted">Opening the studio…</div>;
   if (room === 'vocal' && (mock || session)) return <VocalRoom onBack={() => setRoom('lobby')} />;
-  if (mock) return <Lobby mock projects={mockProjects} onSignOut={null} email="demo" onOpenVocal={() => setRoom('vocal')} />;
+  if (room === 'mixing' && (mock || session)) return <MixingRoom onBack={() => setRoom('lobby')} />;
+  if (mock) return <Lobby mock projects={mockProjects} onSignOut={null} email="demo" onOpenVocal={() => setRoom('vocal')} onOpenMixing={() => setRoom('mixing')} />;
   if (!hasSupabaseConfig) return <div className="center"><div className="card signin"><h1>Studio configuration needed</h1><p className="error" role="alert">Supabase URL or public publishable key is missing. Set both VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY to access your real projects.</p><p className="muted">Demo mode is available only with ?mock=1.</p></div></div>;
   if (authError) return <div className="center"><p className="error" role="alert">{authError}</p></div>;
   if (!session) return <SignIn />;
@@ -34,6 +36,7 @@ export default function App() {
       email={session.user.email}
       onSignOut={() => supabase.auth.signOut()}
       onOpenVocal={() => setRoom('vocal')}
+      onOpenMixing={() => setRoom('mixing')}
     />
   );
 }

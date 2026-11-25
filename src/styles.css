@@ -52,3 +52,14 @@ select { padding: .5rem; border-radius: 8px; border: 1px solid var(--line); back
 .fx input[type=range] { width: 100%; accent-color: var(--gold); }
 .take { display: grid; gap: .6rem; }
 .take audio { width: 100%; }
+
+/* Mixing room */
+.mixing .card { margin-top: 1rem; }
+.mixing .row { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.mixing .transport input[type=range], .mixing .sliders input[type=range] { width: 100%; accent-color: var(--gold); }
+.mixing .mixrow { display: grid; gap: .75rem; list-style: none; }
+.mixing .sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+.mixing .trackname { flex: 1; min-width: 140px; padding: .5rem; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; }
+.mixing button.ghost.on { background: var(--gold); color: #17121f; border-color: var(--gold); }
+.mixing textarea { width: 100%; box-sizing: border-box; padding: .65rem; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: .95rem ui-monospace, monospace; }
+.mixing .cuts { padding-left: 1.2rem; margin: .5rem 0; }

@@ -23,5 +23,8 @@ Open it from the Lobby (works in `?mock=1` too, since it needs only a microphone
 
 Run the unit tests (no install needed, Node 20+): `npm test`
 
+## Mixing Room (milestone 1)
+Load several files, balance them and choose which voice sings each section, then save the mix as a WAV. Details and limits: [docs/MIXING_ROOM.md](docs/MIXING_ROOM.md).
+
 ## Next rooms
-Mixing, AI Producer, Mastering, Production, Story Drop and Release Manager, in that order of the directive.
+AI Producer, Mastering, Production, Story Drop and Release Manager, in that order of the directive.

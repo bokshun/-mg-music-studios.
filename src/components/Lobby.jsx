@@ -27,7 +27,7 @@ function Artwork({ asset }) {
   return src ? <img className="art" src={src} alt={asset.file_name} /> : <div className="art placeholder" role="status" aria-label={error || "Loading artwork"}>{error && <span className="muted">Artwork unavailable</span>}</div>;
 }
 
-export default function Lobby({ mock = false, projects: mockProjects, email, onSignOut, onOpenVocal }) {
+export default function Lobby({ mock = false, projects: mockProjects, email, onSignOut, onOpenVocal, onOpenMixing }) {
   const [projects, setProjects] = useState(mock ? mockProjects : null);
   const [error, setError] = useState('');
   const [selectedId, setSelectedId] = useState(null);
@@ -52,6 +52,7 @@ export default function Lobby({ mock = false, projects: mockProjects, email, onS
         </div>
         <div className="who">
           {onOpenVocal && <button className="primary" onClick={onOpenVocal}>🎤 Vocal Practice Room</button>}
+          {onOpenMixing && <button className="primary" onClick={onOpenMixing}>🎚 Mixing Room</button>}
           {mock && <span className="badge">Demo data</span>}
           <span className="muted">{email}</span>
           {onSignOut && <button className="ghost" onClick={onSignOut}>Sign out</button>}

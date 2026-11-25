@@ -36,3 +36,19 @@ figure { margin: 0; display: grid; gap: .3rem; }
 .wave { min-height: 96px; }
 .toggle { display: flex; align-items: center; gap: .5rem; margin-top: .5rem; }
 .foot { margin-top: 3rem; text-align: center; }
+
+/* Vocal Practice Room */
+.vocal .card { margin-top: 1rem; }
+.vocal .row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.vocal-live { display: grid; gap: .9rem; }
+.meter { flex: 1; min-width: 160px; height: 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.meter-fill { height: 100%; background: var(--gold); transition: width 60ms linear; }
+.meter-fill.clip { background: var(--err); }
+button.primary.rec { background: var(--err); }
+select { padding: .5rem; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; }
+.fx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: .5rem; }
+.fx fieldset { border: 1px solid var(--line); border-radius: 10px; display: grid; gap: .6rem; padding: .75rem; }
+.fx legend { color: var(--gold); padding: 0 .4rem; font-size: .85rem; }
+.fx input[type=range] { width: 100%; accent-color: var(--gold); }
+.take { display: grid; gap: .6rem; }
+.take audio { width: 100%; }
